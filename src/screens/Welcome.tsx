@@ -6,6 +6,7 @@ import H4 from "../components/texts/H4";
 import Subtitle1 from "../components/texts/Subtitle1";
 import { useNavigation } from "@react-navigation/native";
 import { WelcomeScreenNavigationProp } from "../navigators/types";
+import { useTranslation } from "react-i18next";
 
 const Container = styled.View`
   flex: 1;
@@ -32,6 +33,7 @@ const ButtonContainer = styled.View`
 
 export default function Welcome() {
   const navigation = useNavigation<WelcomeScreenNavigationProp>();
+  const { t, i18n } = useTranslation();
 
   function handleLogInPress() {
     navigation.navigate("LogIn");
@@ -61,14 +63,14 @@ export default function Welcome() {
           onPress={handleLogInPress}
           style={[margin.bottom[16], dimension.width.full]}
         >
-          로그인
+          {t("logIn")}
         </Button>
         <Button
           onPress={handleSignUpPress}
           $outlined={true}
           style={[dimension.width.full]}
         >
-          회원 가입
+          {t("signUp")}
         </Button>
       </ButtonContainer>
     </Container>
