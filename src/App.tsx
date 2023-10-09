@@ -5,6 +5,9 @@ import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+import { NavigationContainer } from "@react-navigation/native";
+import RootNavigator from "./navigators/RootNavigator";
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -29,7 +32,7 @@ export default function App() {
     prepare();
   }, []);
 
-  const onLayoutRootView = useCallback(async () => {
+  const handleLayoutReady = useCallback(async () => {
     if (appIsReady) {
       await SplashScreen.hideAsync();
     }
@@ -40,11 +43,8 @@ export default function App() {
   }
 
   return (
-    <View
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-      onLayout={onLayoutRootView}
-    >
-      <Text>SplashScreen Demo! 👋</Text>
-    </View>
+    <NavigationContainer onReady={handleLayoutReady}>
+      <RootNavigator />
+    </NavigationContainer>
   );
 }
