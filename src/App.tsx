@@ -7,6 +7,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./navigators/RootNavigator";
+import { ThemeProvider } from "styled-components/native";
+import { lightTheme } from "./theme/styled";
+import { Asset } from "expo-asset";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,6 +25,7 @@ export default function App() {
           "LineSeedKR-Th": require("./assets/fonts/LINESeedKR-Th.otf"),
         });
         await Font.loadAsync(Ionicons.font);
+        await Asset.loadAsync([require("./assets/images/welcome.png")]);
       } catch (e) {
         console.warn(e);
       } finally {
@@ -43,8 +47,10 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer onReady={handleLayoutReady}>
-      <RootNavigator />
-    </NavigationContainer>
+    <ThemeProvider theme={lightTheme}>
+      <NavigationContainer onReady={handleLayoutReady}>
+        <RootNavigator />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
