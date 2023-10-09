@@ -1,10 +1,11 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Welcome from "../screens/Welcome";
 import LogIn from "../screens/LogIn";
 import SignUp from "../screens/SignUp";
-import Welcome from "../screens/Welcome";
+import { RootStackNavigatorParamList } from "./types";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackNavigatorParamList>();
 
 const RootNavigator = () => {
   return (
@@ -15,6 +16,8 @@ const RootNavigator = () => {
       }}
     >
       <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="LogIn" component={LogIn} />
+      <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>
   );
 };

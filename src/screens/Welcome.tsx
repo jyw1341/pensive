@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
 import Button from "../components/buttons/Button";
-import { margin, dimension } from "../theme/globalStyles";
+import { margin, dimension } from "../theme/commonStyles";
 import H4 from "../components/texts/H4";
 import Subtitle1 from "../components/texts/Subtitle1";
+import { useNavigation } from "@react-navigation/native";
+import { WelcomeScreenNavigationProp } from "../navigators/types";
 
 const Container = styled.View`
   flex: 1;
@@ -29,6 +31,16 @@ const ButtonContainer = styled.View`
 `;
 
 export default function Welcome() {
+  const navigation = useNavigation<WelcomeScreenNavigationProp>();
+
+  function handleLogInPress() {
+    navigation.navigate("LogIn");
+  }
+
+  function handleSignUpPress() {
+    navigation.navigate("SignUp");
+  }
+
   return (
     <Container>
       <WelcomeImage
@@ -45,10 +57,17 @@ export default function Welcome() {
       </TextContainer>
 
       <ButtonContainer>
-        <Button style={[margin.bottom[16], dimension.width.full]}>
+        <Button
+          onPress={handleLogInPress}
+          style={[margin.bottom[16], dimension.width.full]}
+        >
           로그인
         </Button>
-        <Button $outlined={true} style={[dimension.width.full]}>
+        <Button
+          onPress={handleSignUpPress}
+          $outlined={true}
+          style={[dimension.width.full]}
+        >
           회원 가입
         </Button>
       </ButtonContainer>

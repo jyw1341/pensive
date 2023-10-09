@@ -1,10 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./navigators/RootNavigator";
 import { ThemeProvider } from "styled-components/native";
