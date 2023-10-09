@@ -2,6 +2,7 @@ import React from "react";
 import { Platform, TouchableOpacityProps } from "react-native";
 import styled from "styled-components/native";
 import Label from "../texts/Label";
+import { ButtonProps } from "./types";
 
 const Container = styled.TouchableOpacity<{
   $rounded?: boolean;
@@ -46,12 +47,6 @@ const Container = styled.TouchableOpacity<{
   `,
     })}
 `;
-
-interface ButtonProps extends TouchableOpacityProps {
-  $rounded?: boolean;
-  $outlined?: boolean;
-  $shadow?: boolean;
-}
 
 const Button: React.FC<ButtonProps> = ({
   onPress,
