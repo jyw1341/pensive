@@ -4,11 +4,7 @@ import styled from "styled-components/native";
 import Label from "../texts/Label";
 import { ButtonProps } from "./types";
 
-const Container = styled.TouchableOpacity<{
-  $rounded?: boolean;
-  $outlined?: boolean;
-  $shadow?: boolean;
-}>`
+const Container = styled.TouchableOpacity<ButtonProps>`
   flex-direction: row;
 
   justify-content: center;
@@ -17,7 +13,7 @@ const Container = styled.TouchableOpacity<{
 
   background-color: ${(props) => {
     if (props.$outlined) return "transparent";
-    return props.theme.primary;
+    return props.$backgroundColor || props.theme.primary;
   }};
 
   opacity: ${(props) => (props.disabled ? "0.6" : "1")};
@@ -52,6 +48,7 @@ const Button: React.FC<ButtonProps> = ({
   onPress,
   children,
   style,
+  $backgroundColor,
   $rounded,
   $outlined,
   $shadow,
@@ -60,6 +57,7 @@ const Button: React.FC<ButtonProps> = ({
     <Container
       onPress={onPress}
       style={style}
+      $backgroundColor={$backgroundColor}
       $rounded={$rounded}
       $outlined={$outlined}
       $shadow={$shadow}
