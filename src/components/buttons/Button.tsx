@@ -39,7 +39,7 @@ const Container = styled.TouchableOpacity<ButtonProps>`
     shadow-radius: 3.84px;
   `,
       android: `
-    elevation: 1;
+    elevation: 3;
   `,
     })}
 `;

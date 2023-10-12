@@ -17,6 +17,12 @@ const font = {
   },
 };
 
+const icon = {
+  size: {
+    medium: "25px",
+  },
+};
+
 const border = {
   radius: {
     default: "4px",
@@ -26,6 +32,7 @@ const border = {
 
 export const lightTheme: DefaultTheme = {
   fontSize: font.size,
+  iconSize: icon.size,
   fontFamily: font.family,
   borderRadius: border.radius,
   background: lightPalette.background,

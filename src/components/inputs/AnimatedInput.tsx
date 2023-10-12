@@ -19,35 +19,37 @@ const AnimatedInput: React.FC<TextInputProps> = ({
 }) => {
   const [isFocused, setFocused] = useState(false);
   const [inputText, setInputText] = useState("");
-  const yDistance = 14;
+  const theme = useTheme();
+
+  const yTravelDistance = 14;
   const translateY = useSharedValue(0); // translateY를 저장할 공유값
 
-  const fontSize = 14;
-  const translateFont = useSharedValue(fontSize); // 초기 폰트 크기 설정
+  const defaultFontSize = 14;
+  const fontSizeChange = 2;
+  const translateFont = useSharedValue(defaultFontSize); // 초기 폰트 크기 설정
 
-  const borderWidth = 1;
+  const defaultBorderWidth = 1;
+  const boderWidthChange = 1;
   const translateBorderWidth = useSharedValue(1);
-
-  const theme = useTheme();
 
   const animDuration = 200;
 
-  const handleFocus = () => {
+  const handleInputFocus = () => {
     setFocused(true);
     if (!inputText) {
-      translateY.value -= yDistance;
-      translateFont.value = fontSize - 2;
+      translateY.value -= yTravelDistance;
+      translateFont.value = defaultFontSize - fontSizeChange;
     }
-    translateBorderWidth.value = borderWidth + 1;
+    translateBorderWidth.value = defaultBorderWidth + boderWidthChange;
   };
 
-  const handleBlur = () => {
+  const handleInputBlur = () => {
     setFocused(false);
     if (!inputText) {
-      translateY.value += yDistance;
-      translateFont.value = fontSize;
+      translateY.value += yTravelDistance;
+      translateFont.value = defaultFontSize;
     }
-    translateBorderWidth.value = borderWidth;
+    translateBorderWidth.value = defaultBorderWidth;
   };
 
   const handleInputChange = (text: string) => {
@@ -67,7 +69,7 @@ const AnimatedInput: React.FC<TextInputProps> = ({
     };
   });
 
-  const animatedViewStyles = useAnimatedStyle(() => {
+  const animatedVerticalTravelStyles = useAnimatedStyle(() => {
     return {
       transform: [
         {
@@ -80,7 +82,7 @@ const AnimatedInput: React.FC<TextInputProps> = ({
     };
   });
 
-  const animatedLabelStyles = useAnimatedStyle(() => {
+  const animatedFontStyles = useAnimatedStyle(() => {
     return {
       fontSize: withTiming(translateFont.value, { duration: animDuration }),
       color: theme.text.placeholder,
@@ -90,13 +92,16 @@ const AnimatedInput: React.FC<TextInputProps> = ({
   return (
     <Animated.View style={[animatedContainerStyles, style]}>
       <Input
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
         onChangeText={handleInputChange}
         secureTextEntry={secureTextEntry}
       />
-      <Animated.View style={[animatedViewStyles]} pointerEvents="none">
-        <Animated.Text style={[animatedLabelStyles]}>
+      <Animated.View
+        style={[animatedVerticalTravelStyles]}
+        pointerEvents="none"
+      >
+        <Animated.Text style={[animatedFontStyles]}>
           {placeholder}
         </Animated.Text>
       </Animated.View>

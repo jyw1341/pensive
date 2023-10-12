@@ -2,5 +2,11 @@
     "appName" : "Pensive",
     "logIn" : "로그인",
     "signUp" : "회원가입",
-    "email" : "이메일"
+    "email" : "이메일",
+    "password" : "비밀번호",
+    "kakaoLoginLabel" : "카카오로 로그인",
+    "googleLoginLabel" : "구글로 로그인",
+    "findId" : "아이디 찾기",
+    "findPassword" :"비밀번호 찾기",
+    "loginPageDividerText" : "OR"
 }

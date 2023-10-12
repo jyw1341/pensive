@@ -1,10 +1,8 @@
 import React from "react";
-import { TextProps } from "react-native";
 import styled from "styled-components/native";
+import { CustomTextProps } from "./types";
 
-const Caption = styled.Text<{
-  $color?: string;
-}>`
+const Caption = styled.Text<CustomTextProps>`
   font-size: ${(props) => props.theme.fontSize.xsmall};
   font-family: ${(props) => props.theme.fontFamily.thin};
   color: ${(props) => props.$color || props.theme.text.onBackground};

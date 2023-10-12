@@ -18,7 +18,6 @@ const CaptionContainer = styled.View`
 `;
 
 const Container = styled.View`
-  width: 100%;
   height: 64px;
   align-items: center;
   flex-direction: row;

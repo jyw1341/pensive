@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import Button from "../components/buttons/Button";
-import { margin, dimension } from "../theme/commonStyles";
+import layoutStyles from "../theme/layoutStyles";
 import H4 from "../components/texts/H4";
 import Subtitle1 from "../components/texts/Subtitle1";
 import { useNavigation } from "@react-navigation/native";
@@ -20,7 +20,7 @@ const WelcomeImage = styled.Image`
 `;
 
 const AccentText = styled.Text`
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.secondary};
 `;
 
 const TextContainer = styled.View`
@@ -50,8 +50,8 @@ export default function Welcome() {
         resizeMode="contain"
       />
       <TextContainer>
-        <H4>
-          Welcome to <AccentText>Pensive.</AccentText>
+        <H4 style={[layoutStyles.margin.bottom[8]]}>
+          Welcome to <AccentText>Pensive</AccentText>
         </H4>
         <Subtitle1>
           Lorem ipsum dolor sit amet consectetur. Nulla mi justo nunc ultrices.
@@ -61,15 +61,11 @@ export default function Welcome() {
       <ButtonContainer>
         <Button
           onPress={handleLogInPress}
-          style={[margin.bottom[16], dimension.width.full]}
+          style={[layoutStyles.margin.bottom[16]]}
         >
           {t("logIn")}
         </Button>
-        <Button
-          onPress={handleSignUpPress}
-          $outlined={true}
-          style={[dimension.width.full]}
-        >
+        <Button onPress={handleSignUpPress} $outlined={true}>
           {t("signUp")}
         </Button>
       </ButtonContainer>

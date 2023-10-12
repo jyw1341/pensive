@@ -40,6 +40,10 @@ declare module "styled-components/native" {
       onSurface: string;
       dark: string;
     };
+
+    iconSize: {
+      medium: string;
+    };
     primary: string;
     secondary: string;
   }
