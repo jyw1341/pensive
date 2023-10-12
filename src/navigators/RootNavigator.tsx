@@ -16,7 +16,18 @@ const RootNavigator = () => {
       }}
     >
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="LogIn" component={LogIn} />
+      <Stack.Screen
+        name="LogIn"
+        component={LogIn}
+        options={{
+          headerShown: true,
+          headerTitle: "",
+          headerStyle: {
+            backgroundColor: "#F2F2F2",
+          },
+          headerShadowVisible: false,
+        }}
+      />
       <Stack.Screen name="SignUp" component={SignUp} />
     </Stack.Navigator>
   );
